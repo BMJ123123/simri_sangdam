@@ -2,8 +2,8 @@ import json
 from flask import Flask, render_template
 
 app = Flask(__name__)
-
-env = json.dump(open('server.env', 'r'))
+with open('server.env', 'r') as r:
+    env = json.loads(r.read())
 
 @app.route("/")
 def main():
