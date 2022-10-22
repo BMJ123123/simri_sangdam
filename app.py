@@ -36,8 +36,6 @@ with open('server.env', 'r') as r:
 def main():
     return render_template('index.html', datas=datas)
 
-if __name__ == "__main__":
-    app.run('0.0.0.0', port=80, debug=env['is_debug'])
 
 @app.route("/result", methods=['POST'])
 def result():
@@ -58,3 +56,6 @@ def result():
    else:
        val = "건강하게 밝은"
    return render_template("result.html", result=val, percent=percent)
+
+if __name__ == "__main__":
+    app.run('0.0.0.0', port=80, debug=env['is_debug'])

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+   <title>결과 페이지</title>
+</head>
+
+<body>
+   <h1>검사 결과</h1>
+   <div>
+       <h2>우울도: {{ percent }}%</h2>
+       <h3 style='color: red'>{{ result }} 유형</h3>
+   </div>
+</body>
+
+</html>
