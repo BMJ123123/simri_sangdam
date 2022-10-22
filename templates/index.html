@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+   <meta charset="UTF-8">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+   <title>심리 테스트</title>
+</head>
+
+<body>
+   <div>
+       <h1>심리 상담 테스트</h1>
+       <form action="/result" method="post">
+           {% for value in datas %}
+           <div>
+               <h2>{{ value }}</h2>
+               <label>
+                   <input type="radio" name="{{ value }}" value="3"> 매우 그렇다
+               </label><br>
+               <label>
+                   <input type="radio" name="{{ value }}" value="2"> 그렇다
+               </label><br>
+               <label>
+                   <input type="radio" name="{{ value }}" value="1"> 아니다
+               </label><br>
+               <label>
+                   <input type="radio" name="{{ value }}" value="0"> 매우 아니다
+               </label><br>
+           </div><br> {% endfor %}
+           <button type="submit">제출</button>
+           <!-- 항목 HTML 생략 -->
+       </form>
+   </div>
+</body>
+
+</html>
