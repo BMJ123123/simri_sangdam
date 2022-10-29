@@ -47,13 +47,10 @@ button:hover {
    border-radius: 5px;
 }
 
-div {
-   margin-left: 3em;
-}
 
 body {
    margin: 0 auto;
-   width: 50%;
+   width: 70%;
 }
 
 .slidecontainer {
