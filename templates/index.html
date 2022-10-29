@@ -3,37 +3,43 @@
 
 <head>
     <meta charset="UTF-8">
-   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>심리 테스트</title>
 </head>
 
 <body>
-   <div>
-       <h1>심리 상담 테스트</h1>
-    <form action="/result" method="post">
-        {% for value in datas %}
-        <div>
-            <h2>{{ value }}</h2>
-            <label>
-                <input type="range" min="1" max="10" value="5" class="slider" id="myRange">
-                <p>Value: <span id="value"></span></p>
-            </label><br>
-        </div><br>
+    <div>
+        <h1>심리 상담 테스트</h1>
+        <form action="/result" method="post">
+            {% for i, value in datas %}
+            <div>
+                <h2>{{ value }}</h2>
+                <label class="set">
+                    <input type="range" min="1" max="10" value="5" class="slider" name="{{ value }}">
+                    <p>Value: <span class="value"></span></p>
+                </label><br>
+            </div><br>
 
-        <script>
-            var slider = document.getElementById("myRange");
-            var output = document.getElementById("value");
-            output.innerHTML = slider.value;
-            
-            slider.oninput = function() {
-                output.innerHTML = this.value;
+
+            {% endfor %}
+            <button type="submit">제출</button>
+        </form>
+    </div>
+    <script>
+        let labels = document.getElementsByClassName('set');
+        let labelList = Array.prototype.slice.call(labels);
+
+        labelList.forEach(element => {
+            console.log(element)
+            let slider = element.getElementsByClassName('slider')[0];
+            let text = element.getElementsByClassName('value')[0];
+            console.log(slider);
+            console.log(text);
+            slider.onchange = function () {
+                text.innerHTML = slider.value;
             }
-        </script>
-
-        {% endfor %}
-        <button type="submit">제출</button>
-    </form>
-   </div>
+        });
+    </script>
 </body>
 
 </html>

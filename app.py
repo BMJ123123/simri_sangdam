@@ -34,7 +34,7 @@ with open('server.env', 'r') as r:
 
 @app.route("/")
 def main():
-    return render_template('index.html', datas=datas)
+    return render_template('index.html', datas=enumerate(datas))
 
 
 @app.route("/result", methods=['POST'])
